@@ -14,29 +14,32 @@ server
     console.log( "Listening on " + server_ip_address + ", server_port " + server_port )
 });
 
-function doneFilter(stream) {
-  console.log('request done');
+function makeSingleRequest(url, res, callback) {
+    console.log(url);
+    http.get(url, function (resp) {
+        var chunks = [];
+        resp.on('data', function(chunk) {
+            chunks.push(chunk);
+        });
+        resp.on('end', function() {
+            res.write(Buffer.concat(chunks));
+            callback();
+        });
+    });
 }
 
 function makeMultipleRequests(urls, res) {
-  res.writeHead(200, { 'Content-Type': 'text/html; charset=iso-8859-2' });
-  var requestsFinished = 0;
-  urls.forEach(function(url) {
-    console.log(url);
-    http.get(url, function (resp) {
-      chunks = [];
-      resp.on('data', function(chunk) {
-        chunks.push(chunk);
-      });
-      resp.on('end', function() {
-         res.write(Buffer.concat(chunks));
-         requestsFinished++;
-         if (requestsFinished == urls.length) {
-           res.end();
-         }
-      });
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=iso-8859-2' });
+    var requestsFinished = 0;
+    urls.forEach(function(url) {
+        makeSingleRequest(url, res, function() {
+            requestsFinished++;
+            if (requestsFinished == urls.length) {
+                console.log("Request handled successfully");
+                res.end();
+             }
+        });
     });
-  });
 }
 
 function onRequest(req, res) {
