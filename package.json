@@ -20,5 +20,7 @@
   "bugs": {
     "url": "https://github.com/lurym/tricity_bus/issues"
   },
-  "homepage": "https://github.com/lurym/tricity_bus#readme"
+  "homepage": "https://github.com/lurym/tricity_bus#readme",
+  "dependencies": {
+  }
 }
