@@ -1,0 +1,24 @@
+{
+  "name": "tricity_bus",
+  "version": "1.0.0",
+  "description": "Returns information about buses in Tricity",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lurym/tricity_bus.git"
+  },
+  "keywords": [
+    "bus",
+    "tricity"
+  ],
+  "author": "lurym",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/lurym/tricity_bus/issues"
+  },
+  "homepage": "https://github.com/lurym/tricity_bus#readme"
+}
