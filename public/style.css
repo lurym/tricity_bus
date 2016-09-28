@@ -7,7 +7,7 @@ a{color:#333;text-decoration:none}
 a:hover{color:#0054a3}
 #wrapper{width:900px;margin:0 auto;padding:0;border-left:1px solid #eab4b4;border-right:1px solid #eab4b4; border-top: 1px solid #eab4b4;}
 #wrapper-panel{width:950px;margin:0 auto;padding:10px;border:1px solid #eab4b4;background:#fff}
-h1{margin:5px;font-size:1.7em}
+h1{margin:5px;font-size:1.7em;text-align:center}
 /*#header{width:900px;height:216px;margin:0 auto;/*background:#b90707 url(../images/header.gif) no-repeat;*/
 /* background:#b90707 url('http://www.ztm.gda.pl/hmvc/gfx/naglowek/www7.gif') no-repeat;} */
 #header{width:900px;height:275px;margin:0 auto;/*background:#b90707 url(../images/header.gif) no-repeat;*/background:#b90707 url('http://www.ztm.gda.pl/hmvc/gfx/naglowek/baner4.gif') no-repeat;} 

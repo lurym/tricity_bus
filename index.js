@@ -14,8 +14,9 @@ app.listen(server_port, server_ip_address, function () {
 });
 
 /* CONSTANTS */
-var DOM_URL = 'http://www.ztm.gda.pl/rozklady/pobierz_SIP.php?n[0]=1371&t=&l=210';
-var PRACA_URL = 'http://www.ztm.gda.pl/rozklady/pobierz_SIP.php?n[0]=1404&t=&l=210';
+var DOM_BRETOWO = {'stop': 'Kierunek: Brętowo', 'url': 'http://www.ztm.gda.pl/rozklady/pobierz_SIP.php?n[0]=1371&t=&l=210'};
+var DOM_CENTRUM = {'stop': 'Kierunek: Centrum', 'url': 'http://www.ztm.gda.pl/rozklady/pobierz_SIP.php?n[0]=1374&t=&l=210'};
+var PRACA = {'stop': 'Intel', 'url': 'http://www.ztm.gda.pl/rozklady/pobierz_SIP.php?n[0]=1404&t=&l=210'};
 var HTML = '<html><head>\
 <link href="./style.css" rel="stylesheet" type="text/css">\
 </head><body>{0}</body></html>';
@@ -56,8 +57,8 @@ function makeMultipleRequests(urls, res) {
     var requestsFinished = 0;
     var responses = [];
     urls.forEach(function(url) {
-        makeSingleRequest(url, function(singleResponse) {
-            responses.push(singleResponse);
+        makeSingleRequest(url['url'], function(singleResponse) {
+            responses.push('<h1>' + url['stop'] + '</h1>' + singleResponse);
             requestsFinished++;
             if (requestsFinished == urls.length) {
                 reduceResponses(res, responses);
@@ -70,7 +71,7 @@ function makeMultipleRequests(urls, res) {
 function onRequest(req, res) {
   console.log('Request retrieved ' + req.url);
   if (req.url === '/') {
-    makeMultipleRequests([DOM_URL, PRACA_URL], res);
+    makeMultipleRequests([DOM_CENTRUM, DOM_BRETOWO, PRACA], res);
   }
   else {
 	res.writeHead(404);
